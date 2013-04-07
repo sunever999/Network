@@ -11,20 +11,8 @@
 
 @interface NetworkDataSolver : NSObject {
     // 解析结束回调
-	id delegate;
-	SEL onSuccess;
-    SEL onFail;
-
     void (^requestComplete)(BOOL);
 }
-
-@property(nonatomic,assign)id delegate;
-
-// remove later
-//- (void)analysisNetworkData:(NSString *)data interactiveTag:(NWITag)iTag delegate:(id)aDelegate onSuccess:(SEL)aSuccess;
-
-// new for dongge
-- (void)parseData:(NSData *)data requestTag:(RequestTag)iTag delegate:(id)aDelegate onSuccess:(SEL)aSuccess onFail:(SEL)aFail;
 
 - (void)parseData:(NSData *)data requestTag:(RequestTag)iTag complete:(void(^)(BOOL))requestFinished;
 

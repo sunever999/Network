@@ -119,7 +119,6 @@
     NSNumber *code=[[[NSNumber alloc] initWithInt:statusCode] autorelease];
     if (statusCode==200) {
         NetworkDataSolver *dataSolver = [[NetworkDataSolver alloc]init];
-        //            [dataSolver parseData:buf requestTag:rTag delegate:delegate onSuccess:onSuccess onFail:onFail];
         [dataSolver parseData:buf requestTag:rTag complete:requestComplete];
         [dataSolver release];
     }
