@@ -35,11 +35,10 @@
 {
     NSError *jsonParsingError = nil;
     NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
-    NSLog(@"data:[%@]", hotCities);
     
     if (hotCities) {
         if (requestComplete) {
-            requestComplete(YES);
+            requestComplete(YES, [NSDictionary dictionaryWithObjectsAndKeys:hotCities, @"data", nil]);
         }
     }
 }
@@ -57,7 +56,7 @@
 
 #pragma mark - New Interface Method for dongge
 
-- (void)parseData:(NSData *)data requestTag:(RequestTag)iTag complete:(void(^)(BOOL))requestFinished
+- (void)parseData:(NSData *)data requestTag:(RequestTag)iTag complete:(void(^)(BOOL, NSDictionary*))requestFinished
 {
     requestComplete = requestFinished;
 

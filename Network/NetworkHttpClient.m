@@ -36,7 +36,7 @@
 }
 
 - (void)asynchRequest:(NSMutableURLRequest *)aRequest requestTag:(RequestTag)iTag httpMethod:(NSString *)
-    aHttpMedthod complete:(void(^)(BOOL))requestFinished
+    aHttpMedthod complete:(void(^)(BOOL, NSDictionary*))requestFinished
 {
 	statusCode=0;
 	
@@ -62,7 +62,7 @@
 
         if (statusCode != 200) {
             if (requestComplete) {
-                requestComplete(NO);
+                requestComplete(NO, [NSDictionary dictionaryWithObjectsAndKeys:@"error info...", @"err", nil]);
             }
         }
     }
@@ -81,14 +81,8 @@
 	NSString* msg = [NSString stringWithFormat:@"%@",[error localizedDescription]];
 	
     NSLog(@"Connection failed: %@ [%d]", msg, [code integerValue]);
-    if (delegate && onFail) {
-        [delegate performSelector:onFail 
-                       withObject:code 
-                       withObject:msg];
-    }
-    
     if (requestComplete) {
-        requestComplete(NO);
+        requestComplete(NO, [NSDictionary dictionaryWithObjectsAndKeys:code, @"errorCode", msg, @"error", nil]);
     }
 	
 	self.connection=nil;
@@ -122,15 +116,9 @@
         [dataSolver parseData:buf requestTag:rTag complete:requestComplete];
         [dataSolver release];
     }
-    else {
-        if (onFail) {
-            [delegate performSelector:onFail
-                           withObject:code
-                           withObject:s];
-        }
-        
+    else {        
         if (requestComplete) {
-            requestComplete(NO);
+            requestComplete(NO, [NSDictionary dictionaryWithObjectsAndKeys:code, @"errorCode", s, @"error", nil]);
         }
     }
     

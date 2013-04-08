@@ -11,9 +11,9 @@
 
 @interface NetworkDataSolver : NSObject {
     // 解析结束回调
-    void (^requestComplete)(BOOL);
+    void (^requestComplete)(BOOL, NSDictionary*);
 }
 
-- (void)parseData:(NSData *)data requestTag:(RequestTag)iTag complete:(void(^)(BOOL))requestFinished;
+- (void)parseData:(NSData *)data requestTag:(RequestTag)iTag complete:(void(^)(BOOL, NSDictionary*))requestFinished;
 
 @end

@@ -46,18 +46,7 @@
 #pragma mark - http interface
 
 
-#pragma mark - 按颜色查询(A，B，C三件单品，1，随机取，2，按用户选择类型取，3，A不变，更换B，C）
-- (NSString *)getSuitByColorId:(NSString *)colorId category:(NSString *)category mainItemId:(NSString *)itemId
-                          city:(NSString *)cityId editorChoice:(BOOL)isEdtorChoice unTrack:(BOOL)unTrack
-                      delegate:(id)dele onSuccess:(SEL)onSuccess onFail:(SEL)onFail;
-
-
-#pragma mark - --- 杂项 ---
-
 #pragma mark - 获取热点城市
-- (NSString *)getHotcities:(void(^)(BOOL))requestFinished;
-
-#pragma mark - 获取App Store上的版本号
-- (NSString *)getAppVersionFromAppStore:(id)dele onSuccess:(SEL)onSuccess onFail:(SEL)onFail;
+- (NSString *)getHotcities:(void(^)(BOOL, NSDictionary*))requestFinished;
 
 @end

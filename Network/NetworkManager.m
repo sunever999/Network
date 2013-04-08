@@ -100,7 +100,7 @@ static NetworkManager *sharedInstance = nil;
     //*********终止相同交互，执行最新交互，并保存该交互至交互队列，交互结束删除 （key为该交互Tag）*********⬆
 }
 
-- (void)submitAsynchRequestWithRequest:(NSMutableURLRequest *)request Tag:(RequestTag)iTag httpMethod:(NSString *)method complete:(void(^)(BOOL))requestFinished
+- (void)submitAsynchRequestWithRequest:(NSMutableURLRequest *)request Tag:(RequestTag)iTag httpMethod:(NSString *)method complete:(void(^)(BOOL, NSDictionary*))requestFinished
 {
     //*********终止相同交互，执行最新交互，并保存该交互至交互队列，交互结束删除 （key为该交互Tag）*********⬇
     NSString *keyForHttpClient = [NSString stringWithFormat:@"%d",iTag];
@@ -228,7 +228,7 @@ static NetworkManager *sharedInstance = nil;
     [self submitAsynchRequestWithRequest:request Tag:iTag httpMethod:HTTP_GET delegate:aDelegate onSuccess:aSuccess onFail:aFail];
 }
 
-- (void)doGetRequestWithPath:(NSString *)path queryParameters:(NSMutableDictionary *)params requestTag:(RequestTag)iTag complete:(void(^)(BOOL))requestFinished
+- (void)doGetRequestWithPath:(NSString *)path queryParameters:(NSMutableDictionary *)params requestTag:(RequestTag)iTag complete:(void(^)(BOOL, NSDictionary*))requestFinished
 {
     NSURL *url = [NetworkAssist getURL:path queryParameters:params];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -292,35 +292,14 @@ static NetworkManager *sharedInstance = nil;
 #pragma mark - http interface
 
 
-#pragma mark - 按颜色查询(A，B，C三件单品，1，随机取，2，按用户选择类型取，3，A不变，更换B，C）
-- (NSString *)getSuitByColorId:(NSString *)colorId category:(NSString *)category mainItemId:(NSString *)itemId
-                          city:(NSString *)cityId editorChoice:(BOOL)isEditorChoice unTrack:(BOOL)unTrack
-                      delegate:(id)dele onSuccess:(SEL)onSuccess onFail:(SEL)onFail
-{
-    return nil;
-}
-
 #pragma mark - 获取热点城市
-- (NSString *)getHotcities:(void(^)(BOOL))requestFinished
+- (NSString *)getHotcities:(void(^)(BOOL, NSDictionary*))requestFinished
 {
     NSMutableDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
 
     [self doGetRequestWithPath:@"appColorTrendUAMisc" queryParameters:param requestTag:Request_Hot_Cities complete:requestFinished];
     
     return [NSString stringWithFormat:@"%d", Request_Hot_Cities];
-}
-
-
-#pragma mark - 获取App Store上的版本号
-- (NSString *)getAppVersionFromAppStore:(id)dele onSuccess:(SEL)onSuccess onFail:(SEL)onFail
-{
-    NSURL *url = [NSURL URLWithString:App_Info_Url];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    [self submitAsynchRequestWithRequest:request Tag:Request_AppStore_Version httpMethod:HTTP_GET
-                                delegate:dele onSuccess:onSuccess onFail:onFail];
-
-    return [NSString stringWithFormat:@"%d", Request_AppStore_Version];
 }
 
 

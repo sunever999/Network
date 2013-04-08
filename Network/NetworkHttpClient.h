@@ -21,7 +21,7 @@
     //    NWITag tag;
     RequestTag rTag;
     
-    void (^requestComplete)(BOOL);
+    void (^requestComplete)(BOOL, NSDictionary*);
 }
 
 @property(nonatomic,retain)NSURLConnection *connection;
@@ -47,6 +47,6 @@
 
 
 - (void)asynchRequest:(NSMutableURLRequest *)aRequest requestTag:(RequestTag)iTag httpMethod:(NSString *)
-    aHttpMedthod complete:(void(^)(BOOL))requestFinished;
+    aHttpMedthod complete:(void(^)(BOOL, NSDictionary*))requestFinished;
 
 @end

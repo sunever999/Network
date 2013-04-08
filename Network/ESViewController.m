@@ -22,9 +22,9 @@
     
 //    [[NetworkManager sharedManager] getHotCities:self onSuccess:@selector(success) onFail:@selector(fail)];
     
-    [[NetworkManager sharedManager] getHotcities:^(BOOL success) {
+    [[NetworkManager sharedManager] getHotcities:^(BOOL success, NSDictionary *userInfo) {
         if (success) {
-            NSLog(@"block success");
+            NSLog(@"block success [%@]", [userInfo objectForKey:@"data"]);
         }
         else {
             NSLog(@"block fail");
