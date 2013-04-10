@@ -108,7 +108,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)aConnection
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
-	NSString* s = [[[NSString alloc] initWithData:buf encoding:NSUTF8StringEncoding] autorelease];
+	NSString *s = [[[NSString alloc] initWithData:buf encoding:NSUTF8StringEncoding] autorelease];
     
     NSNumber *code=[[[NSNumber alloc] initWithInt:statusCode] autorelease];
     if (statusCode==200) {

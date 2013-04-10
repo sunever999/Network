@@ -11,7 +11,6 @@
 #import "NetworkAssist.h"
 #import "NetworkHttpClient.h"
 //#import "NSData+AESCrypt.h"
-#import "JSON.h"
 
 #import "sys/utsname.h"
 
