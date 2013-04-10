@@ -19,7 +19,6 @@
 		221AA82917114E54000D568A /* ESViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AA82817114E54000D568A /* ESViewController.m */; };
 		221AA82C17114E54000D568A /* ESViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221AA82A17114E54000D568A /* ESViewController.xib */; };
 		221AA84017114E94000D568A /* NetworkAssist.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AA83417114E94000D568A /* NetworkAssist.m */; };
-		221AA84117114E94000D568A /* NetworkDataSolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AA83717114E94000D568A /* NetworkDataSolver.m */; };
 		221AA84217114E94000D568A /* NetworkHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AA83917114E94000D568A /* NetworkHttpClient.m */; };
 		221AA84317114E94000D568A /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AA83B17114E94000D568A /* NetworkManager.m */; };
 		221AA84417114E94000D568A /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AA83D17114E94000D568A /* NSString+Additions.m */; };
@@ -48,8 +47,6 @@
 		221AA83317114E94000D568A /* NetworkAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkAssist.h; sourceTree = "<group>"; };
 		221AA83417114E94000D568A /* NetworkAssist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkAssist.m; sourceTree = "<group>"; };
 		221AA83517114E94000D568A /* NetworkConstans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConstans.h; sourceTree = "<group>"; };
-		221AA83617114E94000D568A /* NetworkDataSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDataSolver.h; sourceTree = "<group>"; };
-		221AA83717114E94000D568A /* NetworkDataSolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDataSolver.m; sourceTree = "<group>"; };
 		221AA83817114E94000D568A /* NetworkHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkHttpClient.h; sourceTree = "<group>"; };
 		221AA83917114E94000D568A /* NetworkHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkHttpClient.m; sourceTree = "<group>"; };
 		221AA83A17114E94000D568A /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
@@ -141,8 +138,6 @@
 				221AA83317114E94000D568A /* NetworkAssist.h */,
 				221AA83417114E94000D568A /* NetworkAssist.m */,
 				221AA83517114E94000D568A /* NetworkConstans.h */,
-				221AA83617114E94000D568A /* NetworkDataSolver.h */,
-				221AA83717114E94000D568A /* NetworkDataSolver.m */,
 				221AA83817114E94000D568A /* NetworkHttpClient.h */,
 				221AA83917114E94000D568A /* NetworkHttpClient.m */,
 				221AA83A17114E94000D568A /* NetworkManager.h */,
@@ -226,7 +221,6 @@
 				221AA82017114E54000D568A /* ESAppDelegate.m in Sources */,
 				221AA82917114E54000D568A /* ESViewController.m in Sources */,
 				221AA84017114E94000D568A /* NetworkAssist.m in Sources */,
-				221AA84117114E94000D568A /* NetworkDataSolver.m in Sources */,
 				221AA84217114E94000D568A /* NetworkHttpClient.m in Sources */,
 				221AA84317114E94000D568A /* NetworkManager.m in Sources */,
 				221AA84417114E94000D568A /* NSString+Additions.m in Sources */,

@@ -24,7 +24,11 @@
     
     [[NetworkManager sharedManager] getHotcities:^(BOOL success, NSDictionary *userInfo) {
         if (success) {
-            NSLog(@"block success [%@]", [userInfo objectForKey:@"data"]);
+            NSData *data = [userInfo objectForKey:@"data"];
+            NSError *jsonParsingError = nil;
+            NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+
+            NSLog(@"block success [%@]", hotCities);
         }
         else {
             NSLog(@"block fail");

@@ -7,7 +7,6 @@
 //
 
 #import "NetworkHttpClient.h"
-#import "NetworkDataSolver.h"
 #import "NetworkManager.h"
 
 
@@ -112,9 +111,9 @@
     
     NSNumber *code=[[[NSNumber alloc] initWithInt:statusCode] autorelease];
     if (statusCode==200) {
-        NetworkDataSolver *dataSolver = [[NetworkDataSolver alloc]init];
-        [dataSolver parseData:buf requestTag:rTag complete:requestComplete];
-        [dataSolver release];
+        if (requestComplete) {
+            requestComplete(YES, [NSDictionary dictionaryWithObjectsAndKeys:buf, @"data", nil]);
+        }
     }
     else {        
         if (requestComplete) {
