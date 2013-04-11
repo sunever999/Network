@@ -16,8 +16,6 @@
 
 #define FORM_BOUNDARY @"JianShiSugarLadyBoUnDaRY"
 
-static NetworkManager *sharedInstance = nil;
-
 @implementation NetworkManager
 
 @synthesize httpClientDic;
@@ -305,44 +303,30 @@ static NetworkManager *sharedInstance = nil;
 ////////////////////////////////////////////////////////////////
 #pragma mark - Singleton
 
-+ (void) initialize {
-    if (!sharedInstance) {
-        sharedInstance = [[self alloc] init];
-    }
-}
 
-+ (id) sharedManager {
-    //Already set by +initialize.
++ (id) sharedManager
+{
+    static NetworkManager *sharedInstance;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[NetworkManager alloc] init];
+    });
+    
     return sharedInstance;
 }
 
-+ (id) allocWithZone:(NSZone *)zone {
-    //Usually already set by +initialize.
-    if (sharedInstance) {
-        return [sharedInstance retain];
-    } else {
-        return [super allocWithZone:zone];
-    }
-}
-
-- (id) init {
-    if (!sharedInstance) {
-        if ((self = [super init])) {
-            //Initialize the instance here.
-//            NSLog(@"init NetworkManager.");
-            self.httpClientDic = [NSMutableDictionary dictionary];
-            _errorMsg = [[NSString alloc] init];
-        }
-        
-        sharedInstance = self;
-    } else if (self != sharedInstance) {
-        [self release];
-        self = sharedInstance;
+- (id) init
+{
+    if ((self = [super init])) {
+        //Initialize the instance here.
+        //            NSLog(@"init NetworkManager.");
+        self.httpClientDic = [NSMutableDictionary dictionary];
+        _errorMsg = [[NSString alloc] init];
     }
     
     return self;
 }
-
 
 - (void)dealloc
 {
