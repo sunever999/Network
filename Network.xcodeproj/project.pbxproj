@@ -25,6 +25,7 @@
 		221AA84517114E94000D568A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AA83F17114E94000D568A /* Reachability.m */; };
 		221AA85B17115082000D568A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221AA85A17115082000D568A /* CFNetwork.framework */; };
 		221AA85D1711508F000D568A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221AA85C1711508F000D568A /* SystemConfiguration.framework */; };
+		22C217C6171B004000B4B4C7 /* ESColorAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C217C5171B004000B4B4C7 /* ESColorAlbum.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		221AA83F17114E94000D568A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		221AA85A17115082000D568A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		221AA85C1711508F000D568A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		22C217C4171B004000B4B4C7 /* ESColorAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESColorAlbum.h; sourceTree = "<group>"; };
+		22C217C5171B004000B4B4C7 /* ESColorAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESColorAlbum.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,7 @@
 		221AA81517114E54000D568A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				22C217C3171B001400B4B4C7 /* Model */,
 				221AA83217114E87000D568A /* HTTP */,
 				221AA81E17114E54000D568A /* ESAppDelegate.h */,
 				221AA81F17114E54000D568A /* ESAppDelegate.m */,
@@ -148,6 +152,15 @@
 				221AA83F17114E94000D568A /* Reachability.m */,
 			);
 			name = HTTP;
+			sourceTree = "<group>";
+		};
+		22C217C3171B001400B4B4C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22C217C4171B004000B4B4C7 /* ESColorAlbum.h */,
+				22C217C5171B004000B4B4C7 /* ESColorAlbum.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +238,7 @@
 				221AA84317114E94000D568A /* NetworkManager.m in Sources */,
 				221AA84417114E94000D568A /* NSString+Additions.m in Sources */,
 				221AA84517114E94000D568A /* Reachability.m in Sources */,
+				22C217C6171B004000B4B4C7 /* ESColorAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

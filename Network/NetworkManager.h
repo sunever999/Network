@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSMutableDictionary *httpClientDic;
 @property (nonatomic, retain) NSString *errorMsg;
 
-+ (id) sharedManager;
++ (id)sharedManager;
 
 - (BOOL)isNetworkOK;    // 判断网络是否通
 - (BOOL)isNetworkWifi;  // 判断是否通过wifi联网

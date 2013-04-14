@@ -304,7 +304,7 @@
 #pragma mark - Singleton
 
 
-+ (id) sharedManager
++ (id)sharedManager
 {
     static NetworkManager *sharedInstance;
     
@@ -316,7 +316,7 @@
     return sharedInstance;
 }
 
-- (id) init
+- (id)init
 {
     if ((self = [super init])) {
         //Initialize the instance here.
