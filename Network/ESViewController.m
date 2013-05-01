@@ -10,6 +10,8 @@
 
 #import "NetworkManager.h"
 
+#import "RequestEntity.h"
+
 @interface ESViewController ()
 
 @end
@@ -22,12 +24,32 @@
     
 //    [[NetworkManager sharedManager] getHotCities:self onSuccess:@selector(success) onFail:@selector(fail)];
     
-    [[NetworkManager sharedManager] getHotcities:^(BOOL success, NSDictionary *userInfo) {
+//    [[NetworkManager sharedManager] getHotcities:^(BOOL success, NSDictionary *userInfo) {
+//        if (success) {
+//            NSData *data = [userInfo objectForKey:@"data"];
+//            NSError *jsonParsingError = nil;
+//            NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+//
+//            NSLog(@"block success [%@]", hotCities);
+//        }
+//        else {
+//            NSLog(@"block fail");
+//        }
+//    }];
+    
+    
+    // new method
+    RequestEntity *request = [[RequestEntity alloc] init];
+    request.requestTag = Request_Hot_Cities;
+    request.requestPath = @"appColorTrendUAMisc";
+    request.requestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
+    
+    [[NetworkManager sharedManager] doRequest:request complete:^(BOOL success, NSDictionary *userInfo) {
         if (success) {
             NSData *data = [userInfo objectForKey:@"data"];
             NSError *jsonParsingError = nil;
             NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
-
+            
             NSLog(@"block success [%@]", hotCities);
         }
         else {

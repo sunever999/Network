@@ -292,13 +292,23 @@
 #pragma mark - 获取热点城市
 - (NSString *)getHotcities:(void(^)(BOOL, NSDictionary*))requestFinished
 {
-    NSMutableDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
-
-    [self doGetRequestWithPath:@"appColorTrendUAMisc" queryParameters:param requestTag:Request_Hot_Cities complete:requestFinished];
+//    NSMutableDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
+//
+//    [self doGetRequestWithPath:@"appColorTrendUAMisc" queryParameters:param requestTag:Request_Hot_Cities complete:requestFinished];
+//    
+//    return [NSString stringWithFormat:@"%d", Request_Hot_Cities];
     
-    return [NSString stringWithFormat:@"%d", Request_Hot_Cities];
+    return nil;
 }
 
+
+- (NSString *)doRequest:(RequestEntity *)request complete:(void(^)(BOOL, NSDictionary*))requestFinished
+{
+    [self doGetRequestWithPath:request.requestPath queryParameters:request.requestParameters
+                    requestTag:request.requestTag complete:requestFinished];
+    
+    return [NSString stringWithFormat:@"%d", request.requestTag];
+}
 
 ////////////////////////////////////////////////////////////////
 #pragma mark - Singleton
