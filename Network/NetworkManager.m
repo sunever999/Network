@@ -304,7 +304,12 @@
 
 - (NSString *)doRequest:(RequestEntity *)request complete:(void(^)(ResponseEntity*))requestFinished
 {
-    [self doGetRequestWithPath:request.requestPath queryParameters:request.requestParameters
+    NSMutableDictionary *param = [request getRequestParameters];
+    if (param == nil) {
+        return nil;
+    }
+    
+    [self doGetRequestWithPath:request.requestPath queryParameters:param
                     requestTag:request.requestTag complete:requestFinished];
     
     return [NSString stringWithFormat:@"%d", request.requestTag];

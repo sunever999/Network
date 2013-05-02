@@ -33,4 +33,6 @@
 @property (nonatomic, retain) NSMutableDictionary *requestParameters;
 @property (nonatomic, copy) void (^requestComplete)(BOOL, NSDictionary*);
 
+- (NSMutableDictionary *)getRequestParameters;
+
 @end

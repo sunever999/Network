@@ -31,4 +31,10 @@
     [super dealloc];
 }
 
+- (NSMutableDictionary *)getRequestParameters
+{
+    // implement at subclass
+    return nil;
+}
+
 @end

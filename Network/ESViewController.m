@@ -11,6 +11,7 @@
 #import "NetworkManager.h"
 
 #import "RequestEntity.h"
+#import "HotCitiesRequest.h"
 
 @interface ESViewController ()
 
@@ -39,12 +40,14 @@
     
     
     // new method
-    RequestEntity *request = [[RequestEntity alloc] init];
-    request.requestTag = Request_Hot_Cities;
-    request.requestPath = @"appColorTrendUAMisc";
-    request.requestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
+//    RequestEntity *request = [[RequestEntity alloc] init];
+//    request.requestTag = Request_Hot_Cities;
+//    request.requestPath = @"appColorTrendUAMisc";
+//    request.requestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
     
-    [[NetworkManager sharedManager] doRequest:request complete:^(ResponseEntity *response) {
+    HotCitiesRequest *hotCityRequest = [[HotCitiesRequest alloc] init];
+    
+    [[NetworkManager sharedManager] doRequest:hotCityRequest complete:^(ResponseEntity *response) {
         if (response.success) {
 //            NSData *data = [userInfo objectForKey:@"data"];
             NSError *jsonParsingError = nil;

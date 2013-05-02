@@ -27,6 +27,7 @@
 		221AA85D1711508F000D568A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221AA85C1711508F000D568A /* SystemConfiguration.framework */; };
 		223F88511731658F00413605 /* RequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 223F88501731658F00413605 /* RequestEntity.m */; };
 		223F88541732AC8200413605 /* ResponseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 223F88531732AC8200413605 /* ResponseEntity.m */; };
+		223F88591732B44400413605 /* HotCitiesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 223F88581732B44400413605 /* HotCitiesRequest.m */; };
 		22C217C6171B004000B4B4C7 /* ESColorAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C217C5171B004000B4B4C7 /* ESColorAlbum.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		223F88501731658F00413605 /* RequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestEntity.m; sourceTree = "<group>"; };
 		223F88521732AC8200413605 /* ResponseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseEntity.h; sourceTree = "<group>"; };
 		223F88531732AC8200413605 /* ResponseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseEntity.m; sourceTree = "<group>"; };
+		223F88571732B44400413605 /* HotCitiesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCitiesRequest.h; sourceTree = "<group>"; };
+		223F88581732B44400413605 /* HotCitiesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCitiesRequest.m; sourceTree = "<group>"; };
 		22C217C4171B004000B4B4C7 /* ESColorAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESColorAlbum.h; sourceTree = "<group>"; };
 		22C217C5171B004000B4B4C7 /* ESColorAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESColorAlbum.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,17 +159,35 @@
 				221AA83D17114E94000D568A /* NSString+Additions.m */,
 				221AA83E17114E94000D568A /* Reachability.h */,
 				221AA83F17114E94000D568A /* Reachability.m */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
+		223F88551732B3EF00413605 /* Request */ = {
+			isa = PBXGroup;
+			children = (
 				223F884F1731658F00413605 /* RequestEntity.h */,
 				223F88501731658F00413605 /* RequestEntity.m */,
+				223F88571732B44400413605 /* HotCitiesRequest.h */,
+				223F88581732B44400413605 /* HotCitiesRequest.m */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		223F88561732B40400413605 /* Response */ = {
+			isa = PBXGroup;
+			children = (
 				223F88521732AC8200413605 /* ResponseEntity.h */,
 				223F88531732AC8200413605 /* ResponseEntity.m */,
 			);
-			name = HTTP;
+			name = Response;
 			sourceTree = "<group>";
 		};
 		22C217C3171B001400B4B4C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				223F88561732B40400413605 /* Response */,
+				223F88551732B3EF00413605 /* Request */,
 				22C217C4171B004000B4B4C7 /* ESColorAlbum.h */,
 				22C217C5171B004000B4B4C7 /* ESColorAlbum.m */,
 			);
@@ -251,6 +272,7 @@
 				22C217C6171B004000B4B4C7 /* ESColorAlbum.m in Sources */,
 				223F88511731658F00413605 /* RequestEntity.m in Sources */,
 				223F88541732AC8200413605 /* ResponseEntity.m in Sources */,
+				223F88591732B44400413605 /* HotCitiesRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
