@@ -44,16 +44,16 @@
     request.requestPath = @"appColorTrendUAMisc";
     request.requestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
     
-    [[NetworkManager sharedManager] doRequest:request complete:^(BOOL success, NSDictionary *userInfo) {
-        if (success) {
-            NSData *data = [userInfo objectForKey:@"data"];
+    [[NetworkManager sharedManager] doRequest:request complete:^(ResponseEntity *response) {
+        if (response.success) {
+//            NSData *data = [userInfo objectForKey:@"data"];
             NSError *jsonParsingError = nil;
-            NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+            NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:response.responseData options:0 error:&jsonParsingError];
             
             NSLog(@"block success [%@]", hotCities);
         }
         else {
-            NSLog(@"block fail");
+            NSLog(@"block fail [%@]", response.errorMsg);
         }
     }];
 }

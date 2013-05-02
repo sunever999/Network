@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NetworkConstans.h"
+#import "ResponseEntity.h"
 
 @interface NetworkHttpClient : NSObject {
     //异步请求时使用的成员
@@ -21,7 +22,7 @@
     //    NWITag tag;
     RequestTag rTag;
     
-    void (^requestComplete)(BOOL, NSDictionary*);
+    void (^requestComplete)(ResponseEntity*);
 }
 
 @property(nonatomic,retain)NSURLConnection *connection;
@@ -47,6 +48,6 @@
 
 
 - (void)asynchRequest:(NSMutableURLRequest *)aRequest requestTag:(RequestTag)iTag httpMethod:(NSString *)
-    aHttpMedthod complete:(void(^)(BOOL, NSDictionary*))requestFinished;
+    aHttpMedthod complete:(void(^)(ResponseEntity*))requestFinished;
 
 @end

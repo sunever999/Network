@@ -26,6 +26,7 @@
 		221AA85B17115082000D568A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221AA85A17115082000D568A /* CFNetwork.framework */; };
 		221AA85D1711508F000D568A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221AA85C1711508F000D568A /* SystemConfiguration.framework */; };
 		223F88511731658F00413605 /* RequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 223F88501731658F00413605 /* RequestEntity.m */; };
+		223F88541732AC8200413605 /* ResponseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 223F88531732AC8200413605 /* ResponseEntity.m */; };
 		22C217C6171B004000B4B4C7 /* ESColorAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C217C5171B004000B4B4C7 /* ESColorAlbum.m */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		221AA85C1711508F000D568A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		223F884F1731658F00413605 /* RequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestEntity.h; sourceTree = "<group>"; };
 		223F88501731658F00413605 /* RequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestEntity.m; sourceTree = "<group>"; };
+		223F88521732AC8200413605 /* ResponseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseEntity.h; sourceTree = "<group>"; };
+		223F88531732AC8200413605 /* ResponseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseEntity.m; sourceTree = "<group>"; };
 		22C217C4171B004000B4B4C7 /* ESColorAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESColorAlbum.h; sourceTree = "<group>"; };
 		22C217C5171B004000B4B4C7 /* ESColorAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESColorAlbum.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +158,8 @@
 				221AA83F17114E94000D568A /* Reachability.m */,
 				223F884F1731658F00413605 /* RequestEntity.h */,
 				223F88501731658F00413605 /* RequestEntity.m */,
+				223F88521732AC8200413605 /* ResponseEntity.h */,
+				223F88531732AC8200413605 /* ResponseEntity.m */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				221AA84517114E94000D568A /* Reachability.m in Sources */,
 				22C217C6171B004000B4B4C7 /* ESColorAlbum.m in Sources */,
 				223F88511731658F00413605 /* RequestEntity.m in Sources */,
+				223F88541732AC8200413605 /* ResponseEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

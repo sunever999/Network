@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NetworkConstans.h"
 #import "RequestEntity.h"
+#import "ResponseEntity.h"
 
 @interface NetworkManager : NSObject {
     // 交互字典
@@ -48,10 +49,10 @@
 
 
 #pragma mark - 获取热点城市
-- (NSString *)getHotcities:(void(^)(BOOL, NSDictionary*))requestFinished;
+- (NSString *)getHotcities:(void(^)(ResponseEntity*))requestFinished;
 
 
-- (NSString *)doRequest:(RequestEntity *)request complete:(void(^)(BOOL, NSDictionary*))requestFinished;
+- (NSString *)doRequest:(RequestEntity *)request complete:(void(^)(ResponseEntity*))requestFinished;
 
 
 @end

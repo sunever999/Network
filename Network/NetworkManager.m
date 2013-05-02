@@ -97,7 +97,7 @@
     //*********终止相同交互，执行最新交互，并保存该交互至交互队列，交互结束删除 （key为该交互Tag）*********⬆
 }
 
-- (void)submitAsynchRequestWithRequest:(NSMutableURLRequest *)request Tag:(RequestTag)iTag httpMethod:(NSString *)method complete:(void(^)(BOOL, NSDictionary*))requestFinished
+- (void)submitAsynchRequestWithRequest:(NSMutableURLRequest *)request Tag:(RequestTag)iTag httpMethod:(NSString *)method complete:(void(^)(ResponseEntity*))requestFinished
 {
     //*********终止相同交互，执行最新交互，并保存该交互至交互队列，交互结束删除 （key为该交互Tag）*********⬇
     NSString *keyForHttpClient = [NSString stringWithFormat:@"%d",iTag];
@@ -225,7 +225,7 @@
     [self submitAsynchRequestWithRequest:request Tag:iTag httpMethod:HTTP_GET delegate:aDelegate onSuccess:aSuccess onFail:aFail];
 }
 
-- (void)doGetRequestWithPath:(NSString *)path queryParameters:(NSMutableDictionary *)params requestTag:(RequestTag)iTag complete:(void(^)(BOOL, NSDictionary*))requestFinished
+- (void)doGetRequestWithPath:(NSString *)path queryParameters:(NSMutableDictionary *)params requestTag:(RequestTag)iTag complete:(void(^)(ResponseEntity*))requestFinished
 {
     NSURL *url = [NetworkAssist getURL:path queryParameters:params];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -290,7 +290,7 @@
 
 
 #pragma mark - 获取热点城市
-- (NSString *)getHotcities:(void(^)(BOOL, NSDictionary*))requestFinished
+- (NSString *)getHotcities:(void(^)(ResponseEntity*))requestFinished
 {
 //    NSMutableDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
 //
@@ -302,7 +302,7 @@
 }
 
 
-- (NSString *)doRequest:(RequestEntity *)request complete:(void(^)(BOOL, NSDictionary*))requestFinished
+- (NSString *)doRequest:(RequestEntity *)request complete:(void(^)(ResponseEntity*))requestFinished
 {
     [self doGetRequestWithPath:request.requestPath queryParameters:request.requestParameters
                     requestTag:request.requestTag complete:requestFinished];

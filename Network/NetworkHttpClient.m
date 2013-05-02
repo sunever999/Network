@@ -35,7 +35,7 @@
 }
 
 - (void)asynchRequest:(NSMutableURLRequest *)aRequest requestTag:(RequestTag)iTag httpMethod:(NSString *)
-    aHttpMedthod complete:(void(^)(BOOL, NSDictionary*))requestFinished
+    aHttpMedthod complete:(void(^)(ResponseEntity*))requestFinished
 {
 	statusCode=0;
 	
@@ -61,7 +61,11 @@
 
         if (statusCode != 200) {
             if (requestComplete) {
-                requestComplete(NO, [NSDictionary dictionaryWithObjectsAndKeys:@"error info...", @"err", nil]);
+                ResponseEntity *responseEntity = [[ResponseEntity alloc] init];
+                responseEntity.success = NO;
+                responseEntity.responseHttpCode = statusCode;
+                requestComplete(responseEntity);
+                [responseEntity release];
             }
         }
     }
@@ -77,11 +81,17 @@
 -(void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error
 {
 	NSNumber *code=[[[NSNumber alloc] initWithInt:statusCode] autorelease];
-	NSString* msg = [NSString stringWithFormat:@"%@",[error localizedDescription]];
+	NSString *msg = [NSString stringWithFormat:@"%@",[error localizedDescription]];
 	
     NSLog(@"Connection failed: %@ [%d]", msg, [code integerValue]);
     if (requestComplete) {
-        requestComplete(NO, [NSDictionary dictionaryWithObjectsAndKeys:code, @"errorCode", msg, @"error", nil]);
+        ResponseEntity *responseEntity = [[ResponseEntity alloc] init];
+        responseEntity.success = NO;
+        responseEntity.responseHttpCode = statusCode;
+        responseEntity.errorMsg = msg;
+        responseEntity.errorCode = code;
+        requestComplete(responseEntity);
+        [responseEntity release];
     }
 	
 	self.connection=nil;
@@ -107,17 +117,28 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)aConnection
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
-	NSString *s = [[[NSString alloc] initWithData:buf encoding:NSUTF8StringEncoding] autorelease];
+	NSString *msg = [[[NSString alloc] initWithData:buf encoding:NSUTF8StringEncoding] autorelease];
     
     NSNumber *code=[[[NSNumber alloc] initWithInt:statusCode] autorelease];
     if (statusCode==200) {
         if (requestComplete) {
-            requestComplete(YES, [NSDictionary dictionaryWithObjectsAndKeys:buf, @"data", nil]);
+            ResponseEntity *responseEntity = [[ResponseEntity alloc] init];
+            responseEntity.success = YES;
+            responseEntity.responseHttpCode = statusCode;
+            responseEntity.responseData = buf;
+            requestComplete(responseEntity);
+            [responseEntity release];
         }
     }
     else {        
         if (requestComplete) {
-            requestComplete(NO, [NSDictionary dictionaryWithObjectsAndKeys:code, @"errorCode", s, @"error", nil]);
+            ResponseEntity *responseEntity = [[ResponseEntity alloc] init];
+            responseEntity.success = NO;
+            responseEntity.responseHttpCode = statusCode;
+            responseEntity.errorCode = code;
+            responseEntity.errorMsg = msg;
+            requestComplete(responseEntity);
+            [responseEntity release];
         }
     }
     
