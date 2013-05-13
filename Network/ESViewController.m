@@ -23,33 +23,11 @@
 {
     NSLog(@"button clicked.");
     
-//    [[NetworkManager sharedManager] getHotCities:self onSuccess:@selector(success) onFail:@selector(fail)];
-    
-//    [[NetworkManager sharedManager] getHotcities:^(BOOL success, NSDictionary *userInfo) {
-//        if (success) {
-//            NSData *data = [userInfo objectForKey:@"data"];
-//            NSError *jsonParsingError = nil;
-//            NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
-//
-//            NSLog(@"block success [%@]", hotCities);
-//        }
-//        else {
-//            NSLog(@"block fail");
-//        }
-//    }];
-    
-    
-    // new method
-//    RequestEntity *request = [[RequestEntity alloc] init];
-//    request.requestTag = Request_Hot_Cities;
-//    request.requestPath = @"appColorTrendUAMisc";
-//    request.requestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"getHotCities", @"cmd", nil];
-    
+    // new method    
     HotCitiesRequest *hotCityRequest = [[HotCitiesRequest alloc] init];
     
     [[NetworkManager sharedManager] doRequest:hotCityRequest complete:^(ResponseEntity *response) {
         if (response.success) {
-//            NSData *data = [userInfo objectForKey:@"data"];
             NSError *jsonParsingError = nil;
             NSArray *hotCities = [NSJSONSerialization JSONObjectWithData:response.responseData options:0 error:&jsonParsingError];
             

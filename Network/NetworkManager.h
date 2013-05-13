@@ -47,11 +47,6 @@
 ////////////////////////////////////////////////////////////////
 #pragma mark - http interface
 
-
-#pragma mark - 获取热点城市
-- (NSString *)getHotcities:(void(^)(ResponseEntity*))requestFinished;
-
-
 - (NSString *)doRequest:(RequestEntity *)request complete:(void(^)(ResponseEntity*))requestFinished;
 
 

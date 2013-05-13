@@ -16,47 +16,33 @@
 @synthesize buf;
 @synthesize delegate;
 
-#pragma mark - Interface Method
 
--(void)asynchRequest:(NSMutableURLRequest *)aRequest interactiveTag:(RequestTag)iTag httpMethod:(NSString *)aHttpMedthod delegate:(id)aDelegate onSuccess:(SEL)aSuccess onFail:(SEL)aFail {
-    
-	statusCode=0;
-	
-	self.delegate=aDelegate;
-	onSuccess=aSuccess;
-	onFail=aFail;
-    rTag = iTag;
-	
-	self.buf=[NSMutableData data];
-	
-    [aRequest setHTTPMethod:aHttpMedthod];
-	connection= [[NSURLConnection alloc] initWithRequest:aRequest delegate:self];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
-}
+#pragma mark - Interface Method
 
 - (void)asynchRequest:(NSMutableURLRequest *)aRequest requestTag:(RequestTag)iTag httpMethod:(NSString *)
     aHttpMedthod complete:(void(^)(ResponseEntity*))requestFinished
 {
-	statusCode=0;
+	statusCode = 0;
 	
     rTag = iTag;
     
     requestComplete = requestFinished;
 	
-	self.buf=[NSMutableData data];
+	self.buf = [NSMutableData data];
 	
     [aRequest setHTTPMethod:aHttpMedthod];
-	connection= [[NSURLConnection alloc] initWithRequest:aRequest delegate:self];
-	[UIApplication sharedApplication].networkActivityIndicatorVisible=YES;    
+	connection = [[NSURLConnection alloc] initWithRequest:aRequest delegate:self];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
+
 
 #pragma mark - NSURLConnection Delegate Method
 
 -(void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse
 {
-	NSHTTPURLResponse *resp=(NSHTTPURLResponse *)aResponse;
+	NSHTTPURLResponse *resp = (NSHTTPURLResponse *)aResponse;
 	if (resp) {
-		statusCode=resp.statusCode;
+		statusCode = resp.statusCode;
 		NSLog(@"Response: %d", statusCode);
 
         if (statusCode != 200) {
@@ -80,7 +66,7 @@
 
 -(void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error
 {
-	NSNumber *code=[[[NSNumber alloc] initWithInt:statusCode] autorelease];
+	NSNumber *code = [[[NSNumber alloc] initWithInt:statusCode] autorelease];
 	NSString *msg = [NSString stringWithFormat:@"%@",[error localizedDescription]];
 	
     NSLog(@"Connection failed: %@ [%d]", msg, [code integerValue]);
@@ -94,10 +80,10 @@
         [responseEntity release];
     }
 	
-	self.connection=nil;
-	self.buf=nil;
+	self.connection = nil;
+	self.buf = nil;
 	
-	[UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     // 从交互列表中删除本次交互
     [[NetworkManager sharedManager] deleteHttpClientWithKey:[NSString stringWithFormat:@"%d", rTag]];
@@ -108,7 +94,7 @@
     [self.connection cancel];
     self.connection = nil;
     self.buf = nil;
-    [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     // 从交互列表中删除本次交互
     [[NetworkManager sharedManager] deleteHttpClientWithKey:[NSString stringWithFormat:@"%d", rTag]];
@@ -116,11 +102,11 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)aConnection
 {
-	[UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	NSString *msg = [[[NSString alloc] initWithData:buf encoding:NSUTF8StringEncoding] autorelease];
     
-    NSNumber *code=[[[NSNumber alloc] initWithInt:statusCode] autorelease];
-    if (statusCode==200) {
+    NSNumber *code = [[[NSNumber alloc] initWithInt:statusCode] autorelease];
+    if (statusCode == 200) {
         if (requestComplete) {
             ResponseEntity *responseEntity = [[ResponseEntity alloc] init];
             responseEntity.success = YES;
@@ -142,8 +128,8 @@
         }
     }
     
-	self.connection=nil;
-	self.buf=nil;
+	self.connection = nil;
+	self.buf = nil;
     
     // 从交互列表中删除本次交互
     [[NetworkManager sharedManager] deleteHttpClientWithKey:[NSString stringWithFormat:@"%d", rTag]];
