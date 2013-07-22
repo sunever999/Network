@@ -28,6 +28,8 @@
 @property(nonatomic,retain)NSMutableData* buf;
 @property(nonatomic,assign)id delegate;
 
+@property (nonatomic, copy) void (^requestComplete)(BOOL);
+
 /*-------------------------
  异步http请求;
  参数:

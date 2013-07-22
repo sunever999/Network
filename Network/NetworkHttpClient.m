@@ -147,6 +147,8 @@
 	[connection release];
 	[buf release];
     
+    [requestComplete release];
+    
 	[super dealloc];
 }
 
